@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const cubeManager = require('../managers/cubeManager');
 
 //  Path /cubes/create
 router.get('/create', (req, res) => {
@@ -6,8 +7,19 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-    console.log(req.body);
+    const { 
+        name,
+        description,
+        imageUrl,
+        difficultyLevel,
+    } = req.body;
 
+    cubeManager.create([
+        name,
+        description,
+        imageUrl,
+        difficultyLevel,
+    ]);
     res.redirect('/');
 });
 
