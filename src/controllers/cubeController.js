@@ -7,19 +7,19 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-    const { 
+    const {
         name,
         description,
         imageUrl,
         difficultyLevel,
     } = req.body;
 
-    cubeManager.create([
+    cubeManager.create({
         name,
         description,
         imageUrl,
-        difficultyLevel,
-    ]);
+        difficultyLevel: Number(difficultyLevel),
+    });
     res.redirect('/');
 });
 
